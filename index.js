@@ -1,3 +1,4 @@
+
 const { connect } = require("puppeteer-real-browser");
 const fs = require('fs');
 const path = require('path');
@@ -17,8 +18,7 @@ async function Open() {
             headless: false,
             turnstile: true
         });
-
-        await page.goto("https://dexscreener.com/?rankBy=trendingScoreH24&order=desc", { waitUntil: "networkidle2" });
+        await page.goto("https://dexscreener.com/solana?rankBy=trendingScoreH24&order=desc", { waitUntil: "networkidle2" });
         await new Promise(resolve => setTimeout(resolve, 2000));  
 
         console.log("Dexscreener page loaded.");
@@ -78,13 +78,9 @@ async function openLink(link, browser) {
     const page = await browser.newPage();
     console.log(`Navigating to: ${link}`);
     
-    await page.goto(link, { waitUntil: "networkidle2" });
-
-    // Wait for and click the chart button
+    await page.goto(link, { waitUntil: "networkidle2" });  
     await page.waitForSelector('button.chakra-button.custom-75ioyn', { timeout: 5000 });
     await page.click('button.chakra-button.custom-75ioyn');
-    
-    // Wait for and click the top traders button
     await page.waitForSelector('button.chakra-button.custom-tv0t33', { timeout: 5000 });
     await page.click('button.chakra-button.custom-tv0t33');
 

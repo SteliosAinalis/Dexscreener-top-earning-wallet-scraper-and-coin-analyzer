@@ -1,12 +1,9 @@
-//modules exported from the other js files
 const { gemFinder } = require('./functions');
 const { analyzeTopGems } = require('./functions');
 const { extractAllCoinNames } = require('./functions');
 const { countCoinFrequencies } = require('./functions');
 const { run } = require('./index');  
-
-
-
+const { findFrequentWallets } = require('./findFrequentWallets'); 
 
 async function main() {
     try {
@@ -24,15 +21,18 @@ async function main() {
     }
     try {
         await gemFinder();
-        console.log("gemFinder.js script completed.");
+        console.log("gemFinder script completed.");
     } catch (err) {
         console.error(" Error in gemFinder.js:", err);
     }
-    gemFinder();
+    
+
+    
     analyzeTopGems();
     extractAllCoinNames();
     countCoinFrequencies();
-
+    
+    findFrequentWallets(); 
 }
 
 

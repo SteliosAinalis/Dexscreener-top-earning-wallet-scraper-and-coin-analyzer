@@ -1,5 +1,4 @@
 const { connect } = require("puppeteer-real-browser");
-// const { clickGotItButton } = require('./functions');
 const fs = require('fs');
 const path = require('path');
 
